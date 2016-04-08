@@ -43,7 +43,7 @@ function init() {
 
 
   // Answers
-  for (i=0; i< im_urls.length; i++){
+  for (i=0; im_urls.length; i++){
       Anno[i] = new Object();
       Im[i] = new Image();
       Im[i].src = im_urls[i];
@@ -526,7 +526,7 @@ function getNextImage() {
   $.ajax({
     type: "GET",
     // "TODO: set the url of server to process the data",
-    url: "http://ec2-52-200-196-118.compute-1.amazonaws.com:3000/get_next_image",
+    url: "https://turkserv.exptech.co:3000/get_next_image",
     //url: "http://localhost:3000/get_next_image",
     crossDomain: true
   }).done(function(data) {

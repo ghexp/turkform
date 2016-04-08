@@ -94,7 +94,7 @@ function submit_form(){
       type: "POST",
       // "TODO: set the url of server to process the data",
       //url: "http://localhost:3000/submit_label",
-      url: "http://ec2-52-200-196-118.compute-1.amazonaws.com:3000/submit_label",
+      url: "https://turkserv.exptech.co:3000/submit_label",
       crossDomain: true,
       dataType: 'json',
       data: {'resp':JSON.stringify(resp)}
