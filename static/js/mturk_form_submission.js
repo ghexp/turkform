@@ -86,25 +86,28 @@ function submit_form(){
       "images": images,
       "annotations": annotations
     };
+
+    ctrler.turn_off_panels();
     // post ajax request to server
     // if there's no backend to process the request, form can be directly submitted to MTurk
     $.ajax({
       type: "POST",
       // "TODO: set the url of server to process the data",
-      url: "http://localhost:3000/submit_label",
-      //url: "http://ec2-52-200-196-118.compute-1.amazonaws.com:3000/submit_label",
+      //url: "http://localhost:3000/submit_label",
+      url: "http://ec2-52-200-196-118.compute-1.amazonaws.com:3000/submit_label",
       crossDomain: true,
       dataType: 'json',
       data: {'resp':JSON.stringify(resp)}
       //data:resp
     }).done(function(data) {
-      console.log(data);
       im_urls = data.image_urls;
+      loadImages();
       init();
       // TODO bad
-      // removing all listeners so that imClick_Ctrl can add them back
+      // removing all listeners so that imClick_Ctrl can add them back TODO refactor
       $(document.body).find("*").off();
       $(document).off('keyup');
-        //$('#mturk_form').submit();
+
+        $('#mturk_form').submit();
     });
 }

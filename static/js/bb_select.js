@@ -85,13 +85,46 @@ function setupImagePanels() {
   } else {
     console.log(im_urls);
     var node = document.getElementById("images");
-    node.appendChild($.parseHTML("<div class='im-panel' id='im-panel-0'><div class='imdiv' id='imdiv-0'><img class='img' id='img-0' src='"+im_urls[0]+"'></img></div></div>")[0]);
+    node.appendChild($.parseHTML("<div class='im-panel' id='im-panel-0'><div class='imdiv' id='imdiv-0'><canvas class='img' id='img-0'></canvas></div></div>")[0]);
     for (i=1; i < im_urls.length; i++){
-      node.appendChild($.parseHTML("<div class='im-panel' id='im-panel-"+i+"'><div class='imdiv' id='imdiv-"+i+"'><img class='img' id='img-"+i+"'" + "src='" + im_urls[i] +"'></img></div></div>")[0]);
+      node.appendChild($.parseHTML("<div class='im-panel' id='im-panel-"+i+"'><div class='imdiv' id='imdiv-"+i+"'><canvas class='img' id='img-"+i+"'></canvas></div></div>")[0]);
+    }
+
+    loadImages();
+  }
+}
+
+function loadImages() {
+  if (typeof(im_urls) == 'undefined') {
+    setTimeout(function(){
+      loadImages();
+    }, 50);
+  } else {
+    for (var ii = 0; ii < im_urls.length; ii++) {
+      var id = '#img-' + ii.toString();
+      //console.log(ii);
+      var canvas = $(id)[0]; //.attr('background', Im[i].src);
+      var ctx = canvas.getContext("2d");
+      var background = new Image();
+      background.src = im_urls[ii];
+      background.onload = function(background,canvas,ctx) {
+        return function() {
+          console.log(canvas);
+          console.log(ctx);
+          canvas.width = background.width;
+          canvas.height = background.height;
+          ctx.drawImage(background,0,0);
+        };
+      }(background,canvas,ctx);
     }
   }
 }
 
+Ctrler.prototype.turn_off_panels = function() {
+  for (var ii = 0; ii < this.N; ii++) {
+    $('#im-panel-' + ii).hide();
+  }
+}
 // Ctrler controls the state of UI and rendering
 function Ctrler(){
     this.N = 0;
@@ -105,10 +138,6 @@ function Ctrler(){
 Ctrler.prototype.render_im_panel = function(){
     for (i = 0; i < this.N; i++){
         if (i == this.cur_img_idx){
-            console.log("WERE RENDERING");
-            console.log(i);
-            console.log(this.cur_img_idx);
-            $('#im-panel-'+i).find('img').attr('src', Im[i].src);
             $('#im-panel-'+i).show();
         }else{
             $('#im-panel-'+i).hide();
@@ -526,8 +555,8 @@ function getNextImage() {
   $.ajax({
     type: "GET",
     // "TODO: set the url of server to process the data",
-    url: "http://ec2-52-200-196-118.compute-1.amazonaws.com:3000/get_next_image",
-    //url: "http://localhost:3000/get_next_image",
+    //url: "http://ec2-52-200-196-118.compute-1.amazonaws.com:3000/get_next_image",
+    url: "http://localhost:3000/get_next_image",
     crossDomain: true
   }).done(function(data) {
     console.log(data);
