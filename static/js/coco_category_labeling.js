@@ -55,19 +55,19 @@ function initialize_anncats(){
             //================================================================================
             // add next and previous buttons
             //================================================================================
-            button_next = $('<img id="button-next'+i+'" class="img-button" src="static/img/icons/right.png"></img>');
+            button_next = $('<img id="button-next'+i+'" class="img-button" src="https://cdn.rawgit.com/ghexp/turkform/master/static/img/icons/right.png"></img>');
             button_next.bind('click', function(){
                 nextTask();
             });
-            button_panel_right.hover( function(){ $(this).find('img').attr('src', "static/img/icons/right_green.png")},
-                                      function(){ $(this).find('img').attr('src', "static/img/icons/right.png")});
+            button_panel_right.hover( function(){ $(this).find('img').attr('src', "https://cdn.rawgit.com/ghexp/turkform/master/static/img/icons/right_green.png")},
+                                      function(){ $(this).find('img').attr('src', "https://cdn.rawgit.com/ghexp/turkform/master/static/img/icons/right.png")});
 
-            button_prev = $('<img id="button-prev'+i+'" class="img-button" src="static/img/icons/left.png"></img>');
+            button_prev = $('<img id="button-prev'+i+'" class="img-button" src="https://cdn.rawgit.com/ghexp/turkform/master/static/img/icons/left.png"></img>');
             button_prev.bind('click', function(){
                 prevTask();
             });
-            button_panel_left.hover( function(){ $(this).find('img').attr('src', "static/img/icons/left_green.png")},
-                                      function(){ $(this).find('img').attr('src', "static/img/icons/left.png")});
+            button_panel_left.hover( function(){ $(this).find('img').attr('src', "https://cdn.rawgit.com/ghexp/turkform/master/static/img/icons/left_green.png")},
+                                      function(){ $(this).find('img').attr('src', "https://cdn.rawgit.com/ghexp/turkform/master/static/img/icons/left.png")});
             button_next.appendTo(button_panel_right);
             button_prev.appendTo(button_panel_left);
             //==================================================
@@ -202,7 +202,7 @@ function renderTask(){
             $('#task'+i).show();
         }else{
             $('#task'+i).hide();
-        } 
+        }
     }
 }
 // create a function to render icons when icon list change or move
@@ -275,7 +275,7 @@ function addIconListener(icons, idx){
 //                icons[idx]['div1'].css('border-color', 'green');
 //                icons[idx]['isselected'] = 1;
             }
-            
+
             // re-render everything
             renderIcons(supercat_cursor[img_idx], icons_all[img_idx], img_idx);
         });
