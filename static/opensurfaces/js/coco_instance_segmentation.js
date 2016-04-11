@@ -7,7 +7,7 @@ function Ctrler(){
     this.im = new Image();
     // use cat icon for demo
     var cat_id = 17;
-    this.im.src = 'static/img/categories/'+cat_id+'.png';
+    this.im.src = 'https://cdn.rawgit.com/ghexp/turkform/master/static/img/categories/'+cat_id+'.png';
     this.zoomLevel = 0;
 }
 // center icon

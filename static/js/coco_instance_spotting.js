@@ -128,7 +128,7 @@ Ctrler.prototype.render_category_panel = function(){
     var i = this.cur_img_idx;
     var j = this.cur_obj_idx;
     var cat_id = Anno[i].cat_id
-    var src = 'static/img/categories/' + cat_id[0] + '.png';
+    var src = 'https://cdn.rawgit.com/ghexp/turkform/master/static/img/categories/' + cat_id[0] + '.png';
     // render icon
     var cat_div = $('#div-cat-img');
     console.log(cat_div);
@@ -158,7 +158,7 @@ Ctrler.prototype.render_hint = function(){
     $('.hint').css('left', pos_x);
     $('.hint').css('top', pos_y);
     var cat_id = Anno[i].cat_id
-    var src = 'static/img/categories/' + cat_id + '.png';
+    var src = 'https://cdn.rawgit.com/ghexp/turkform/master/static/img/categories/' + cat_id + '.png';
     $('.hint-img').attr('src', src);
     var s = 400;
     $('.hint').fadeTo(s,0.1).fadeTo(s,1).fadeTo(s,0.1).fadeTo(s,1).fadeTo(s, 0);
