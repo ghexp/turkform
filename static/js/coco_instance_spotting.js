@@ -526,7 +526,7 @@ function getNextImage() {
   $.ajax({
     type: "GET",
     // "TODO: set the url of server to process the data",
-    url: "https://turkserv.exptech.co:3000/get_next_image",
+    url: "https://d1hjgeda31jqt0.cloudfront.net/get_next_image",
     //url: "http://localhost:3000/get_next_image",
     crossDomain: true
   }).done(function(data) {
