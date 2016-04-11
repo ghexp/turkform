@@ -43,7 +43,7 @@ function init() {
 
 
   // Answers
-  for (i=0; im_urls.length; i++){
+  for (i=0; i < im_urls.length; i++){
       Anno[i] = new Object();
       Im[i] = new Image();
       Im[i].src = im_urls[i];
