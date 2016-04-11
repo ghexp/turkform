@@ -524,7 +524,7 @@ function imClick_Ctrl(){
 // get a new image
 function getNextImage() {
   $.ajax({
-    type: "GET",
+    type: "POST",
     // "TODO: set the url of server to process the data",
     url: "https://d1hjgeda31jqt0.cloudfront.net/get_next_image",
     //url: "http://localhost:3000/get_next_image",
