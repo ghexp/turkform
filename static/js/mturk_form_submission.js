@@ -44,7 +44,7 @@ function submit_form(){
                 "iscrowd": 0,
                 "hitId": hitVal,
                 "assignmentId": assignmentVal,
-                "workerId": workerId,
+                "workerId": workerVal,
 
               }
               annotations.push(annotation);
