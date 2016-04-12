@@ -87,7 +87,7 @@ function submit_form(){
       "annotations": annotations
     };
 
-    ctrler.turn_off_panels();
+    //ctrler.turn_off_panels();
     // post ajax request to server
     // if there's no backend to process the request, form can be directly submitted to MTurk
     $.ajax({
@@ -101,7 +101,7 @@ function submit_form(){
       //data:resp
     }).done(function(data) {
       im_urls = data.image_urls;
-      loadImages();
+      //loadImages();
       init();
       // TODO bad
       // removing all listeners so that imClick_Ctrl can add them back TODO refactor
