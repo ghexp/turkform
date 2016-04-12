@@ -18,38 +18,12 @@ function submit_form(){
     // the values to send to MTurk has already defined inside #mturk_form
     // if you don't need to bother to set value here
 
-    var info = {
-      "year": 2016,
-      "version" : "0.0.0",
-      "description" : "EXP generated dataset",
-      "contributor" : "EXP",
-      "url" : "",
-      "date_created" : Date()
-    };
+    var hitVal = document.getElementById('hitId').value;
+    var assignmentVal = document.getElementById('assignmentId').value;
+    var workerVal = document.getElementById('workerId').value;
 
-    var license = {
-      "id": 0,
-      "name": "none",
-      "url": ""
-    };
-
-    images = [];
     annotations = [];
     for (var ii = 0; ii < Anno.length; ii++) {
-      // push an image
-      image = {
-        "id": ii,
-        //"width": int, // should populate this
-        //"height": int, // should populate this
-        //"file_name": str, // should populate this
-        "license": 0,
-        "url": im_urls[ii],
-        //"flickr_url": str,
-        //"coco_url": str,
-        "date_captured": Date()
-      };
-      images.push(image);
-
       for (jj = 0; jj < Anno[ii].ans.length; jj++) {
         for (kk = 0; kk < Anno[ii].ans[jj].length; kk++) {
           if (Anno[ii].ans[jj][kk] == 1) {
@@ -57,19 +31,21 @@ function submit_form(){
 	      pos = [];
 	      pos.push(Anno[ii].annoloc[jj][kk][0] - img.offsetLeft);
 	      pos.push(Anno[ii].annoloc[jj][kk][1] - img.offsetTop);
-	      console.log(pos);
-	      console.log(img.offsetTop);
-	      console.log(img.offsetLeft);
               annotation = {
                 "id": kk,
                 "image_id": ii,
-                "image_url": im_urls[ii],
+                "coco_url": im_urls[ii],
+                "flickr_url": im_urls[ii],
                 "category_id": jj,
                 //"segmentation": RLE or[polygon],
                 //"area": float,
                   //"bbox": [x, y, width, height],
                 "pos": pos,
-                "iscrowd": 0
+                "iscrowd": 0,
+                "hitId": hitVal,
+                "assignmentId": assignmentVal,
+                "workerId": workerId,
+
               }
               annotations.push(annotation);
               hideMarker(ii, jj, kk);
@@ -82,8 +58,6 @@ function submit_form(){
 
 
     resp = {
-      "info": info,
-      "images": images,
       "annotations": annotations
     };
 
@@ -101,6 +75,7 @@ function submit_form(){
       //data:resp
     }).done(function(data) {
       im_urls = data.image_urls;
+      im_ids  = data.image_ids;
       //loadImages();
       init();
       // TODO bad
