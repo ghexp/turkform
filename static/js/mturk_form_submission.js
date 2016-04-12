@@ -3,6 +3,8 @@
 // The form is submitted to MTurk after server successfully process the submission
 // The HIT is completed after MTurk server receives the submission
 // ================================================================
+
+
 function submit_form(){
 
     // process answers
@@ -18,9 +20,9 @@ function submit_form(){
     // the values to send to MTurk has already defined inside #mturk_form
     // if you don't need to bother to set value here
 
-    var hitVal = document.getElementById('hitId').value;
+    var hitVal = turkGetParam('hitId','-');//document.getElementById('hitId').value;
     var assignmentVal = document.getElementById('assignmentId').value;
-    var workerVal = document.getElementById('workerId').value;
+    var workerVal = turkGetParam('workerId', 'EXP');//document.getElementById('workerId').value;
 
     annotations = [];
     for (var ii = 0; ii < Anno.length; ii++) {
