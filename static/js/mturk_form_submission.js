@@ -76,14 +76,14 @@ function submit_form(){
       data: {'resp':JSON.stringify(resp)}
       //data:resp
     }).done(function(data) {
-      im_urls = data.image_urls;
-      im_ids  = data.image_ids;
+      //im_urls = data.image_urls;
+      //im_ids  = data.image_ids; for turkers we don't need this
       //loadImages();
-      init();
+      //init();
       // TODO bad
       // removing all listeners so that imClick_Ctrl can add them back TODO refactor
-      $(document.body).find("*").off();
-      $(document).off('keyup');
+      //$(document.body).find("*").off();
+      //$(document).off('keyup');
 
         $('#mturk_form').submit();
     });
