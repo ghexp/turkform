@@ -26,13 +26,17 @@ function submit_form(){
 
     annotations = [];
     for (var ii = 0; ii < Anno.length; ii++) {
+      var im = $('#img-'+ii);
+      var imLeft = im.position().left;
+      var imTop = im.position().top;
       for (jj = 0; jj < Anno[ii].ans.length; jj++) {
         for (kk = 0; kk < Anno[ii].ans[jj].length; kk++) {
           if (Anno[ii].ans[jj][kk] == 1) {
-	      var img = document.getElementById('im-panel-0');
-	      pos = [];
-	      pos.push(Anno[ii].annoloc[jj][kk][0] - img.offsetLeft);
-	      pos.push(Anno[ii].annoloc[jj][kk][1] - img.offsetTop);
+        var x = Math.floor(Anno[ii].annoloc_percentage[jj][kk][0] * Im[ii].width);
+        var y = Math.floor(Anno[ii].annoloc_percentage[jj][kk][1] * Im[ii].height);
+
+        pos = [x,y];
+        //console.log(x + " " + y);
               annotation = {
                 "id": kk,
                 "image_id": ii,
